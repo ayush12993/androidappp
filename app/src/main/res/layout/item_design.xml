@@ -3,13 +3,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout android:orientation="vertical" android:layout_width="120dp" android:layout_height="195dp"
-    android:background="#fff">
+    <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+                   android:weightSum="2"
+                   android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="#fff">
 
 
         <androidx.cardview.widget.CardView
                 android:id="@+id/imageView1"
-                android:layout_width="110dp" android:layout_height="130dp" app:cardCornerRadius="14dp"
+                android:layout_width="190dp" android:layout_height="200dp" app:cardCornerRadius="14dp"
                 android:layout_margin="5dp"
                 android:elevation="10dp">
 
@@ -21,10 +26,11 @@
                     android:scaleType="centerCrop"
             />
         </androidx.cardview.widget.CardView>
-<!--new card-->
-        <TextView android:id="@+id/movie_name" android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:text="what he f"/>
-        <TextView android:textSize="7sp" android:id="@+id/movie_rating" android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:text="what he f"/>
+        <!--new card-->
+        <TextView android:gravity="center" android:layout_gravity="center" android:id="@+id/movie_name" android:textStyle="bold" android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:text="what he f"/>
+        <TextView android:gravity="center" android:layout_gravity="center" android:textSize="11sp" android:textStyle="italic|bold" android:id="@+id/movie_rating" android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="what he f"/>
     </LinearLayout>
 </RelativeLayout>
