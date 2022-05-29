@@ -14,6 +14,7 @@
                 android:elevation="10dp">
 
             <ImageView
+                    android:src="@drawable/download"
                     android:id="@+id/roundedImageView"
                     android:layout_width="match_parent" android:layout_height="match_parent"
                     android:background="#8746"
@@ -23,7 +24,7 @@
 <!--new card-->
         <TextView android:id="@+id/movie_name" android:layout_width="match_parent" android:layout_height="wrap_content"
         android:text="what he f"/>
-        <TextView android:textSize="7sp" android:id="@+id/movie_year" android:layout_width="match_parent" android:layout_height="wrap_content"
+        <TextView android:textSize="7sp" android:id="@+id/movie_rating" android:layout_width="match_parent" android:layout_height="wrap_content"
         android:text="what he f"/>
     </LinearLayout>
 </RelativeLayout>
