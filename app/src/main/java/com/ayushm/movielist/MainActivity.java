@@ -53,17 +53,20 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (response.isSuccessful()){
+                    for (int i=0;i<50;i++){
                     MovieAdapter movieAdapter = new MovieAdapter(response.body());
-                    recyclerView.setAdapter(movieAdapter);
+                    recyclerView.setAdapter(movieAdapter);}
               return;
                 }
+
+
 
 //                List<MoviesList> moviesLists = response.body();
 //                for (MoviesList moviesList : moviesLists){
 //                    String strmovieLists = "";
 //                    strmovieLists += "num" + moviesList.getNum() + "\n" ;
 //                    strmovieLists += "name" + moviesList.getName() + "\n" ;
-//                    responseText.append(strmovieLists);
+//                    responseText.append(strmovieLists);}
 
                 }
 
