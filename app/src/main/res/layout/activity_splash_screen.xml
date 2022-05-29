@@ -8,12 +8,12 @@
         android:layout_height="match_parent"
         tools:context=".Splash_Screen">
 
-    <TextView android:id="@+id/task_1" android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:layout_gravity="center" android:gravity="center" android:text="Task1" android:textColor="#0F0F0F"
+    <TextView android:id="@+id/task_1" android:padding="25dp" android:textStyle="bold" android:textSize="14sp" android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:layout_gravity="center" android:gravity="center" android:text="Task 1" android:textColor="#0F0F0F"
     />
 
-    <TextView android:id="@+id/task_2" android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:layout_gravity="center" android:gravity="center" android:text="Task1" android:textColor="#0F0F0F"
+    <TextView android:id="@+id/task_2" android:layout_width="wrap_content" android:textStyle="bold"  android:padding="25dp" android:layout_height="wrap_content"
+    android:layout_gravity="center" android:gravity="center" android:text="Task2" android:textColor="#0F0F0F"
     />
 
 </LinearLayout>
