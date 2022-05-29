@@ -1,4 +1,4 @@
-package com.ayushm.movielist.adapter;
+package com.ayushm.movielist.task2.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.ayushm.movielist.R;
-import com.ayushm.movielist.model.MoviesList;
+import com.ayushm.movielist.task2.model.MoviesList;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.PicassoProvider;
 
 import java.util.List;
 

@@ -1,12 +1,8 @@
-package com.ayushm.movielist.RequestManager;
+package com.ayushm.movielist.task2.RequestManager;
 
-import com.ayushm.movielist.model.Categories;
-import com.ayushm.movielist.model.MoviesList;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.ayushm.movielist.task2.model.Categories;
+import com.ayushm.movielist.task2.model.MoviesList;
 import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 

@@ -1,4 +1,4 @@
-package com.ayushm.movielist.RequestManager;
+package com.ayushm.movielist.task2.RequestManager;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

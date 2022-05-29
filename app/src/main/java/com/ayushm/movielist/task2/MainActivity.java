@@ -1,16 +1,15 @@
-package com.ayushm.movielist;
+package com.ayushm.movielist.task2;
 
-import android.util.Log;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.ayushm.movielist.RequestManager.APIClient;
-import com.ayushm.movielist.RequestManager.APIInterface;
-import com.ayushm.movielist.adapter.MovieAdapter;
-import com.ayushm.movielist.model.MoviesList;
+import com.ayushm.movielist.R;
+import com.ayushm.movielist.task2.RequestManager.APIClient;
+import com.ayushm.movielist.task2.RequestManager.APIInterface;
+import com.ayushm.movielist.task2.adapter.MovieAdapter;
+import com.ayushm.movielist.task2.model.MoviesList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
