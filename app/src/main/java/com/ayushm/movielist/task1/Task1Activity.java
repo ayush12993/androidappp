@@ -1,9 +1,11 @@
 package com.ayushm.movielist.task1;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ayushm.movielist.R;
 import com.ayushm.movielist.task1.adapter.TaskAdapter;
 import com.ayushm.movielist.task1.model.TaskModel;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -23,50 +26,165 @@ public class Task1Activity extends AppCompatActivity {
 
     TaskAdapter taskAdapter;
 
-    ArrayList<TaskModel> taskModels = new ArrayList<>();
+    ArrayList<TaskModel> taskModels;
+    private MaterialButton btnAdd;
+
+    EditText userBody,userTitle;
+
+
+    AlertDialog alertDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task1);
-        recyclerView = findViewById(R.id.recycler_view1);
+        taskModels = new ArrayList<>();
+
+
+
+
+
+
+        recyclerView = findViewById(R.id.contactListId);
+        recyclerView.setHasFixedSize(true);
+
+
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         floatingActionButton = findViewById(R.id.btn_opendialog);
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Dialog dialog = new Dialog(Task1Activity.this);
-                dialog.setContentView(R.layout.add_something);
+        Dialog dialog = new Dialog(Task1Activity.this);
+        dialog.setContentView(R.layout.layout_edit_task);
 
-                EditText taskBody,taskTitle;
-                Button submit;
-                taskTitle = dialog.findViewById(R.id.taskHeadingTitle);
-                taskBody = dialog.findViewById(R.id.taskHeadingBody);
-                submit = dialog.findViewById(R.id.btn_Action);
+        floatingActionButton.setOnClickListener(v -> {
+            userTitle = dialog.findViewById(R.id.titleHead);
+            userBody = dialog.findViewById(R.id.titleBody);
 
-                submit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String title="",body="";
-                        if (!taskTitle.getText().toString().equals("")){
-                        title = taskTitle.getText().toString();}
-                        else {
-                            Toast.makeText(Task1Activity.this,"Please Enter Title",Toast.LENGTH_SHORT).show();}
-                        if (!taskBody.getText().toString().equals("")){
-                            body = taskBody.getText().toString();}
-                        else {
-                            Toast.makeText(Task1Activity.this,"Please Enter Body",Toast.LENGTH_SHORT).show();}
-                    taskModels.add(new TaskModel(title,body));
-                                           taskAdapter.notifyItemInserted(taskModels.size()-1);
-                        recyclerView.scrollToPosition(taskModels.size()-1);
-                        dialog.dismiss();
+            btnAdd = dialog.findViewById(R.id.btnEdit);
+            btnAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String strUserName = "", strUserContact = "";
+                    if (userTitle.getText() != null) {
+                        strUserName = userTitle.getText().toString();
                     }
-                });
-                dialog.show();
-            }
+
+                    if (strUserName.equals("")) {
+                        Toast.makeText(Task1Activity.this, "Please enter user name", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+                    if (userBody.getText() != null) {
+                        strUserContact = userBody.getText().toString();
+                    }
+                    if (strUserContact.equals("")) {
+                        Toast.makeText(Task1Activity.this, "Please enter your contact number", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+
+                    addTask(strUserName, strUserContact);
+                    dialog.dismiss();
+                }
+            });dialog.show();
+
         });
-        recyclerView.setLayoutManager(new LinearLayoutManager(Task1Activity.this));
-        taskAdapter = new TaskAdapter(Task1Activity.this,taskModels);
+
+    }
+
+
+    public void addTask(String strUserTitle, String strUserBody) {
+
+
+        TaskModel obj = new TaskModel(strUserTitle,strUserBody);
+
+        obj.setTaskTitle(strUserTitle);
+        obj.setTaskBody(strUserBody);
+
+
+        taskModels.add(obj);
+
+
+
+        taskAdapter = new TaskAdapter(this, taskModels, this::onEditClick);
         recyclerView.setAdapter(taskAdapter);
+
+
+    }
+
+
+    public void onEditClick(TaskModel listCurrentData,int currentPosition) {
+
+
+        AlertDialog.Builder builderObj=new AlertDialog.Builder(this);
+        View view= LayoutInflater.from(this).inflate(R.layout.layout_edit_task,null);
+
+        EditText userTitleEtn=view.findViewById(R.id.titleHead);
+        EditText userBodyEtn=view.findViewById(R.id.titleBody);
+        MaterialButton btnEdit=view.findViewById(R.id.btnEdit);
+
+        userBodyEtn.setText(listCurrentData.getTaskTitle());
+        userTitleEtn.setText(listCurrentData.getTaskBody());
+
+        ImageView closeAlert=view.findViewById(R.id.closeAlert);
+        builderObj.setCancelable(false);
+        builderObj.setView(view);
+
+        closeAlert.setOnClickListener(v->{
+            alertDialog.cancel();
+        });
+
+        btnEdit.setOnClickListener(v->{
+            String strUserName = "", strUserContact = "";
+            if (userTitleEtn.getText() != null) {
+                strUserName = userTitleEtn.getText().toString();
+            }
+
+            if (strUserName.equals("")) {
+                Toast.makeText(this, "Please enter user name", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            if (userBodyEtn.getText() != null) {
+                strUserContact = userBodyEtn.getText().toString();
+            }
+            if (strUserContact.equals("")) {
+                Toast.makeText(this, "Please enter your contact number", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+
+            editContact(strUserName, strUserContact,currentPosition);
+            recyclerView.scrollToPosition(taskModels.size()-1);
+        });
+
+
+        alertDialog=builderObj.create();
+        alertDialog.show();
+
+
+
+
+
+    }
+
+
+    public void editContact(String strUserTitle, String strUserBody,int currentPosition){
+
+
+
+        TaskModel obj = new TaskModel(strUserTitle,strUserBody);
+
+        obj.setTaskTitle(strUserTitle);
+        obj.setTaskBody(strUserBody);
+
+
+        taskModels.add(obj);
+
+
+
+        taskAdapter = new TaskAdapter(this, taskModels, this::onEditClick);
+        recyclerView.setAdapter(taskAdapter);
+        alertDialog.cancel();
 
     }
 }

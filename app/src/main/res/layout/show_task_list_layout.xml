@@ -19,6 +19,16 @@
         android:layout_gravity="right"
         android:gravity="right"
         android:layout_height="match_parent">
+        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView
+                android:id="@+id/titleTxtId"
+                android:layout_width="wrap_content"
+                android:text="Your title Here!"
+                android:textSize="20sp"
+                android:padding="5sp"
+                android:layout_marginRight="90dp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
         <ImageView
             android:id="@+id/imgEdit"
             android:layout_width="30sp"
@@ -31,14 +41,8 @@
             android:layout_height="30sp"/>
 
     </LinearLayout>
-    <TextView
-        android:id="@+id/titleTxtId"
-        android:layout_width="match_parent"
-        android:text="Your title Here!"
-        android:textSize="20sp"
-        android:padding="5sp"
-        android:textColor="@color/black"
-        android:layout_height="wrap_content"/>
+
+
     <TextView
         android:id="@+id/bodyTxtId"
         android:layout_width="match_parent"

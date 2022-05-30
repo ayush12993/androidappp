@@ -8,30 +8,6 @@
         android:layout_height="match_parent"
         tools:context=".task1.Task1Activity">
 
-    <EditText
-            android:id="@+id/userTaskTitle"
-            android:layout_width="match_parent"
-            android:layout_margin="10sp"
-            android:inputType="textCapCharacters"
-            android:layout_height="wrap_content"
-            android:hint="Enter Title" />
-
-    <EditText
-            android:id="@+id/userTaskBody"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10sp"
-            android:maxLength="10"
-            android:inputType="number"
-            android:hint="Enter Task Body" />
-
-    <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAdd"
-            android:layout_width="match_parent"
-            android:text="Add/Update Task"
-            android:textColor="@color/white"
-            android:layout_margin="10sp"
-            android:layout_height="wrap_content"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
