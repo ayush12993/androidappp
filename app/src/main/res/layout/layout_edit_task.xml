@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/closeAlert"
-        android:layout_width="30sp"
+        android:layout_width="30dp"
         android:layout_height="30sp"
         android:layout_gravity="right"
         android:layout_margin="10sp"
@@ -16,19 +16,18 @@
 
     <EditText
         android:id="@+id/titleHead"
-        android:layout_width="match_parent"
+        android:layout_width="248dp"
         android:layout_margin="10sp"
         android:inputType="textCapCharacters"
         android:layout_height="wrap_content"
         android:hint="Enter Title" />
 
     <EditText
-        android:id="@+id/userMobile"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:id="@+id/titleBody"
+        android:layout_width="248dp"
+        android:layout_height="74dp"
         android:layout_margin="10sp"
-        android:maxLength="10"
-        android:inputType="number"
+        android:inputType="textLongMessage"
         android:hint="Enter What,s on your mind" />
 
     <com.google.android.material.button.MaterialButton
